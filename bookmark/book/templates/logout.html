@@ -1,0 +1,208 @@
+<!-- {% extends "layout/app-layout.html" %}
+
+{% block 'content' %} -->
+<style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #654ea3, #eaafc8);
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        overflow-x: hidden;
+    }
+    
+.logout-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 5rem auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .logout-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .logout-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(to right, #654ea3, #eaafc8);
+    }
+
+    .logout-message {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        display: inline-block;
+        background: linear-gradient(to right, #654ea3, #da98b4);
+        color: white;
+        padding: 0.9rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(101, 78, 163, 0.4);
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(101, 78, 163, 0.6);
+    }
+
+    .btn-tri {
+        background: transparent;
+        color: #654ea3;
+        border: 2px solid #654ea3;
+        box-shadow: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 50px;
+         margin-top: 1.5rem;
+            font-size: 0.9rem;
+    }
+
+    .btn-tri:hover {
+        background-color: rgba(101, 78, 163, 0.1);
+    }
+
+
+      .btn-secondary {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(255, 65, 108, 0.3);
+        }
+
+         .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 750px;
+            width: 100%;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+                
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #654ea3, #eaafc8);
+        }
+        
+    .logo {
+            width: 80px;
+            height: 80px;
+            padding: 60px;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #654ea3, #da98b4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .logo-icon {
+            font-size: 2.6rem;
+            color: white;
+        }
+
+                h1 {
+            color: #654ea3;
+            font-size: 2.0rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #654ea3, #eaafc8);
+            border-radius: 3px;
+        }
+
+
+
+</style>
+
+
+<div class="container">
+        <div class="logo">
+            <i class=" logo-icon">📚</i>       
+</div>
+<h1>Bookmark Buddy</h1>
+<div class="logout-container">
+  {% if user.is_authenticated %}
+    <p  class="logout-message">You are currently logged in as {{ user.username }}.</p>
+    <form method="post">
+      {% csrf_token %}
+      <a href="{% url 'list_bookmarks' %}" class="btn btn-tri"><i class="fas fa-arrow-left"></i> Back to List</a>
+
+
+      <button type="submit" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i>Log Out</button>
+    </form>
+  {% else %}
+    <p class="logout-message">You are not currently logged in.</p>
+  {% endif %}
+  </div>
+  </div>
+<!-- {% endblock %} -->
+
+
+<a href="{% url 'list_bookmarks' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+
+

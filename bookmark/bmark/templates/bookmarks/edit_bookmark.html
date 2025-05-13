@@ -1,0 +1,231 @@
+<!-- <h1>Edit Bookmark</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'list_bookmarks' %}">Back to List</a> -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <div class="container">
+        <div class="logo">
+            <i class="logo-icon">📚</i>
+        </div>
+
+        <h1>Edit Bookmark</h1>
+        <p class="tagline">Update your saved link information</p>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-buttons">
+                <button type="submit" class="btn"><i class="fas fa-save"></i> Save</button>
+                <a href="{% url 'list_bookmarks' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Bookmark Buddy | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+                
+        body {
+            background: linear-gradient(135deg, #654ea3, #eaafc8);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+                
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #654ea3, #eaafc8);
+        }
+
+        h1 {
+            color: #654ea3;
+            font-size: 2.0rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #654ea3, #eaafc8);
+            border-radius: 3px;
+        }
+        
+        .tagline {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            padding: 48px;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #654ea3, #da98b4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+
+            .footer {
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px dotted white;
+            transition: all 0.3s ease;
+        }
+                
+        .footer a:hover {
+            border-bottom: 1px solid white;
+        }
+
+
+         .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #654ea3, #da98b4);
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(101, 78, 163, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(101, 78, 163, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #654ea3;
+            border: 2px solid #654ea3;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(101, 78, 163, 0.1);
+            box-shadow: none;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+
+        form p {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+form p label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #444;
+    font-weight: 500;
+}
+
+
+form p input,
+form p textarea,
+form p select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+form p input:focus,
+form p textarea:focus,
+form p select:focus {
+    outline: none;
+    border-color: #654ea3;
+    box-shadow: 0 0 0 2px rgba(101, 78, 163, 0.2);
+}
+
+.errorlist {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin: 0.3rem 0 0.8rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+</style>
